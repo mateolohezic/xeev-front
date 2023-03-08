@@ -4,12 +4,12 @@ import './navbar.css';
 
 function NavBar() {
   
-  const [users, setUsers] = useState("")
+  const [users, setUsers] = useState({})
   const id = localStorage.getItem('idUsuarioLogeado');
 
   useEffect(() =>{
     if (id !== null){
-        axios.get(`http://localhost:8000/users/${id}`)
+        axios.get(`http://automatizacion-xeev-production.up.railway.app/users/${id}`)
         .then((response) =>{
             setUsers(response.data);
         })
@@ -17,7 +17,7 @@ function NavBar() {
             console.error(error);
         })
     }
-}, [users])
+}, [])
 
   return (
     <nav className="navbar navbar-expand-lg navBar sticky-top">
