@@ -11,7 +11,7 @@ function CargarCodigo() {
   const onClickk = async (data) => {
     setSubmitting(true);
     try {
-      const response = await axios.get('http://localhost:8000/users/obtener-users');
+      const response = await axios.get('https://automatizacion-xeev-production.up.railway.app/users/obtener-users');
       setStatusMessage('Proceso finalizado');
       console.log(response.data);
     } catch (error) {
@@ -24,7 +24,7 @@ function CargarCodigo() {
   const onSubmit = async (data) => {
     setSubmitting(true);
     try {
-      const response = await axios.post('http://localhost:8000/codigo/agregar-codigo', {
+      const response = await axios.post('https://automatizacion-xeev-production.up.railway.app/codigo/agregar-codigo', {
         lineId: data.vendedor,
         codeValue: data.codigo
       });
