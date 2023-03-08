@@ -1,0 +1,14 @@
+.navBar{
+    background-color: #323643;
+    color: white;
+}
+
+.navbarIconoBoton{
+    border: 1px solid white;
+    border-radius: 8px;
+    background-color: #323643;
+}
+
+.navbarIconoBoton:hover{
+    background-color: #606470;
+}
