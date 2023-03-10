@@ -24,14 +24,13 @@ function CargarCodigo() {
   const onSubmit = async (data) => {
     setSubmitting(true);
     try {
-      const response = await axios.post('https://automatizacion-xeev-production.up.railway.app/codigo/agregar-codigo', {
-        lineId: data.vendedor,
-        codeValue: data.codigo
+      const response = await axios.post('http://localhost:8000/codigo/post-codigo', {
+        codigo: data.codigo
       });
       setStatusMessage('Proceso finalizado');
       console.log(response.data);
     } catch (error) {
-      setStatusMessage('Ocurrió un error');
+      setStatusMessage('Ocurrió un error, vuelva a intentar en 15 minutos.');
       console.log(error);
     }
     setSubmitting(false);
@@ -39,6 +38,7 @@ function CargarCodigo() {
 
   return (
     <div className="container my-5">
+      <h1 className='fs-3 mb-3'>Cargar un nuevo código</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="p-3 border rounded">
         <div className="form-group">
           <label htmlFor="vendedor" className='mt-2'>Código vendedor</label>
@@ -65,27 +65,21 @@ function CargarCodigo() {
             <span className="invalid-feedback d-block">Campo inválido</span>
           )}
         </div>
-
-        <button type="submit" className="btn btn-danger mt-3" disabled={submitting}>
+        <div className='d-flex flex-row-reverse mb-4 mt-4'>
+        <button type="submit" className="btn btn-primary mt-3" disabled={submitting}>
           {submitting ? (
             <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
           ) : (
             'Crear'
           )}
         </button>
+        </div>
         {statusMessage && (
           <div className={`alert ${statusMessage.includes('error') ? 'alert-danger' : 'alert-success'} mt-3`} role="alert">
             {statusMessage}
           </div>
         )}
       </form>
-      <button type="button" onClick={onClickk} className="btn btn-success mt-3" disabled={submitting}>
-          {submitting ? (
-            <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-          ) : (
-            'Crear'
-          )}
-        </button>
     </div>
   );
 }

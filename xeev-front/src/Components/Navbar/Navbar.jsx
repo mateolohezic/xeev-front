@@ -7,6 +7,11 @@ function NavBar() {
   const [users, setUsers] = useState({})
   const id = localStorage.getItem('idUsuarioLogeado');
 
+  const cerrarSesion = () => {
+    localStorage.removeItem('idUsuarioLogeado');
+    localStorage.removeItem('token');
+  }
+
   useEffect(() =>{
     if (id !== null){
         axios.get(`http://automatizacion-xeev-production.up.railway.app/users/${id}`)
@@ -29,17 +34,30 @@ function NavBar() {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0 gap-3">
             <li className="nav-item navbarIconoBoton">
               <a className="nav-link text-decoration-none text-light" aria-current="page" href="/"><i className="bi bi-house-door-fill"></i> Inicio</a>
             </li>
+            {
+              id ?
+              <>
+                <li className="nav-item navbarIconoBoton">
+                  <a className="nav-link text-decoration-none text-light" aria-current="page" href="/Codigo"><i className="bi bi-play-circle-fill"></i> Codigos</a>
+                </li>
+              </>
+              :
+              <></>
+            }
           </ul>
           {
             id ?
             <>
-            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+            <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-3">
               <li className="nav-item navbarIconoBoton">
-                <a className="nav-link text-decoration-none text-light" aria-current="page" href="/Login"><i className="bi bi-person-circle"></i> Perfil</a>
+                <a className="nav-link text-decoration-none text-light" aria-current="page" href="/"><i className="bi bi-person-circle"></i> Perfil</a>
+              </li>
+              <li className="nav-item navbarIconoBoton">
+                <a className="nav-link text-decoration-none text-light" aria-current="page" href="/" onClick={cerrarSesion}><i className="bi bi-door-open-fill"></i> Cerrar Sesión</a>
               </li>
             </ul>
             </>

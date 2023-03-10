@@ -11,7 +11,7 @@ function FormularioIniciarSesion() {
     
     const onSubmit = async(datos) => {
         setCargando(true)
-        const respuesta = await axios.post(`https://automatizacion-xeev-production.up.railway.app/users/login-user`, {
+        const respuesta = await axios.post(`http://localhost:8000/users/login-user`, {
             email: datos.email,
             password: datos.password
         })
@@ -51,7 +51,7 @@ function FormularioIniciarSesion() {
                 <div className="row">
                 <div className="mb-3 col-xxl-12 col-xl-12 col-lg-12 col-sm-12 col-md-12">
                     <label className="form-label">Contraseña</label>
-                    <input id="password" type="text" className={`mt-3 form-control ${errors.password && 'is-invalid'}`}
+                    <input id="password" type="password" className={`mt-3 form-control ${errors.password && 'is-invalid'}`}
                         {...register('password', {required: true, pattern: /^([a-zA-Z0-9áéíóúñÑÁÉÍÓÚ*#$-_+"!%&]{6,25})$/i })}
                     />
                     {errors.password?.type === 'required' && (

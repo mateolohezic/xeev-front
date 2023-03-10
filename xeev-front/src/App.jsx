@@ -1,10 +1,10 @@
 import React from 'react'
 import { Route, Routes } from "react-router-dom";
-import CargarCodigo from './Components/CargarCodigo/CargarCodigo';
 import NavBar from './Components/Navbar/Navbar';
-import './App.css';
 import Inicio from './Pages/Inicio/Inicio';
 import Login from './Pages/Login/Login';
+import Codigos from './Pages/Codigos/Codigos';
+import './App.css';
 
 function App() {
 
@@ -13,7 +13,7 @@ function App() {
     <NavBar/>
     <Routes>
       <Route path="/" element={<Inicio/>} />
-      <Route path="/Codigo" element={<CargarCodigo/>} />
+      <Route path="/Codigo" element={<Codigos/>} />
       <Route path="/Login" element={<Login/>} />
     </Routes>
     </>
