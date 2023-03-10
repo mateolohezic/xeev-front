@@ -24,13 +24,13 @@ function CargarCodigo() {
   const onSubmit = async (data) => {
     setSubmitting(true);
     try {
-      const response = await axios.post('http://localhost:8000/codigo/post-codigo', {
+      const response = await axios.post('https://automatizacion-xeev-production.up.railway.app/codigo/post-codigo', {
         codigo: data.codigo
       });
-      setStatusMessage('Proceso finalizado');
+      setStatusMessage('¡Se añadio con exito!');
       console.log(response.data);
     } catch (error) {
-      setStatusMessage('Ocurrió un error, vuelva a intentar en 15 minutos.');
+      setStatusMessage('Ocurrió un error, espere un momento y vuelva a intentar.');
       console.log(error);
     }
     setSubmitting(false);
@@ -80,6 +80,7 @@ function CargarCodigo() {
           </div>
         )}
       </form>
+      <button type="button" className="btn btn-success mt-3" onClick={onClickk}>Comprobar funcionamiento</button>
     </div>
   );
 }
