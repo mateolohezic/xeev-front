@@ -14,7 +14,7 @@ function NavBar() {
 
   useEffect(() =>{
     if (id !== null){
-        axios.get(`http://automatizacion-xeev-production.up.railway.app/users/${id}`)
+        axios.get(`https://automatizacion-xeev-production.up.railway.app/users/${id}`)
         .then((response) =>{
             setUsers(response.data);
         })
