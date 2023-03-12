@@ -1,0 +1,12 @@
+.tituloCodigos{
+    background-color: #323643;
+    margin-top: 5rem;
+}
+
+.barraBusqueda{
+    border: 2px solid #323643;
+}
+
+.barraBusqueda:focus{
+    font-size: 1.1rem;
+}

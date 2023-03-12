@@ -1,14 +1,23 @@
 .navBar{
     background-color: #323643;
+    border-bottom: 2px solid #93DEFF;
     color: white;
 }
 
 .navbarIconoBoton{
-    border: 1px solid white;
-    border-radius: 8px;
     background-color: #323643;
+    border: 2px solid #323643;
+}
+
+.navbarIconoTexto{
+    background-color: #323643;
+    border: 2px solid #323643;
 }
 
 .navbarIconoBoton:hover{
-    background-color: #606470;
+    border-bottom: 2px solid white;
+    }
+
+.navbar-toggler {
+    background-color: #F7F7F7;
 }

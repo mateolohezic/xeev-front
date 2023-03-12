@@ -1,10 +1,12 @@
 .formularioLogin{
-    margin-top: 5rem;
-    margin-bottom: 5rem;
     background-color: white;
-    box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
     padding-top: 5rem;
     border-radius: 0.2rem;
+}
+
+.tituloIniciarSesion{
+    background-color: #323643;
 }
 
 @media (min-width: 992px){

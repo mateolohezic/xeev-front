@@ -1,0 +1,17 @@
+.imagenInicio{
+    
+}
+.contactanosAhora{
+    border-bottom: 3px solid #93DEFF;
+}
+
+.contactanosAhora:hover{
+    cursor: pointer;
+}
+
+.fondoPantalla{
+    background: url(https://static.vecteezy.com/system/resources/previews/002/072/481/original/abstract-geometric-white-wallpaper-free-vector.jpg) no-repeat center center fixed;
+    background-size: cover;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}

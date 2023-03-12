@@ -12,10 +12,12 @@ function Login() {
 
     return (
         <> 
+        <div className='fondoPantalla'>
             <div className="formularioLogin mx-auto p-5">
-                <div className="text-center mx-auto fs-1 border-bottom border-1 pb-4 w-75 mb-5">Iniciar Sesión</div>
+                <div className="text-center mx-auto fs-1 mb-2 rounded text-light tituloIniciarSesion p-2 mb-4">Iniciar Sesión</div>
                 <FormularioIniciarSesion />
             </div>
+        </div>
         </>
     )
 }

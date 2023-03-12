@@ -4,7 +4,9 @@ import NavBar from './Components/Navbar/Navbar';
 import Inicio from './Pages/Inicio/Inicio';
 import Login from './Pages/Login/Login';
 import Codigos from './Pages/Codigos/Codigos';
+import Admin from './Pages/Admin/Admin';
 import './App.css';
+import Footer from './Components/Footer/Footer';
 
 function App() {
 
@@ -15,7 +17,9 @@ function App() {
       <Route path="/" element={<Inicio/>} />
       <Route path="/Codigo" element={<Codigos/>} />
       <Route path="/Login" element={<Login/>} />
+      <Route path="/Admin" element={<Admin/>} />
     </Routes>
+    <Footer/>
     </>
   );
 }

@@ -12,15 +12,15 @@ function FormularioIniciarSesion() {
     const onSubmit = async(datos) => {
         setCargando(true)
         const respuesta = await axios.post(`https://automatizacion-xeev-production.up.railway.app/users/login-user`, {
-            email: datos.email,
+            email: datos.email.toLowerCase(),
             password: datos.password
         })
         console.log(respuesta);
         if (respuesta.status === 200) {        
             const userEncontrado = respuesta
-            localStorage.setItem('idUsuarioLogeado', userEncontrado.data.user._id);
-            if (userEncontrado.data.user.rol === "admin") {
-                localStorage.setItem('token', userEncontrado.data.token);
+            localStorage.setItem('idUsuarioLogeado', respuesta.data.user._id);
+            if (respuesta.data.user.role === "admin") {
+                localStorage.setItem('token', respuesta.data.token);
             }
             window.location.replace("/")
           } 
@@ -36,8 +36,7 @@ function FormularioIniciarSesion() {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="row">
                 <div className="mb-3 col-xxl-12 col-xl-12 col-lg-12 col-sm-12 col-md-12">
-                    <label className="form-label">Correo electrónico</label>
-                    <input id="email" type="text" className={`mt-3 form-control ${errors.email && 'is-invalid'}`}
+                    <input id="email" type="text" placeholder='Correo electrónico' className={`mt-3 form-control form-control-lg ${errors.email && 'is-invalid'}`}
                         {...register('email', { required: true, pattern: /^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/i })}
                     />
                     {errors.email?.type === 'required' && (
@@ -50,8 +49,7 @@ function FormularioIniciarSesion() {
                 </div>
                 <div className="row">
                 <div className="mb-3 col-xxl-12 col-xl-12 col-lg-12 col-sm-12 col-md-12">
-                    <label className="form-label">Contraseña</label>
-                    <input id="password" type="password" className={`mt-3 form-control ${errors.password && 'is-invalid'}`}
+                    <input id="password" type="password" placeholder='Contraseña' className={`mt-3 form-control form-control-lg ${errors.password && 'is-invalid'}`}
                         {...register('password', {required: true, pattern: /^([a-zA-Z0-9áéíóúñÑÁÉÍÓÚ*#$-_+"!%&]{6,25})$/i })}
                     />
                     {errors.password?.type === 'required' && (
