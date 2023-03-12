@@ -56,6 +56,10 @@ function Codigos() {
         setCodigoPrint(resultados)
     }
 
+    const imprimir = () =>{
+        console.log(codigoPrint);
+    }
+
   return (
     <>
     <div className='fondoPantalla'>
@@ -68,6 +72,7 @@ function Codigos() {
             <div className="input-group mb-3">
             <input type="text" className="form-control barraBusqueda" onInput={(event) => searchCoinciden(event.target.value)} placeholder="Buscar un cliente..." aria-label="Search" aria-describedby="search-button"/>
             </div>
+            <button className='btn btn-primary' onClick={imprimir}>LOG</button>
         </div>
         <div className="col-12">
             <div className="table-responsive mt-3">
