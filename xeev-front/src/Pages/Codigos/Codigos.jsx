@@ -57,7 +57,9 @@ function Codigos() {
     }
 
     const imprimir = () =>{
+        console.log(codigo);
         console.log(codigoPrint);
+        console.log(codigosSinFiltrar);
     }
 
   return (
