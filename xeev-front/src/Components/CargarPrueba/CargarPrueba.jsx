@@ -123,10 +123,7 @@ function CargarPrueba() {
   };
 
   return (
-    <div className="container mt-4">
       <form onSubmit={handleSubmit(Submit)} className="p-4 rounded bg-white">
-      <div><span className='fs-3'>Cargar una nueva prueba</span></div>
-      <div className='mb-4'><span className='text-muted fs-6'>La prueba gratis dura un día.</span></div>
         <div className="form-group">
           <input id="name" type="text" placeholder='Nombre del cliente' className={`mt-3 form-control form-control-lg ${errors.name && 'is-invalid'}`}
             {...register('name', { required: true, pattern: /^[\s]*[a-zA-ZáéíóúñÁÉÍÓÚÑ]+(?:[ ][a-zA-ZáéíóúñÁÉÍÓÚÑ]+)*[\s]*$/ })}
@@ -186,7 +183,6 @@ function CargarPrueba() {
           </div>
         )}
       </form>
-    </div>
   );
 }
 

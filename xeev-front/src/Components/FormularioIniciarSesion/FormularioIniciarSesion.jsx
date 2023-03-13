@@ -50,7 +50,7 @@ function FormularioIniciarSesion() {
                 <div className="row">
                 <div className="mb-3 col-xxl-12 col-xl-12 col-lg-12 col-sm-12 col-md-12">
                     <input id="password" type="password" placeholder='Contraseña' className={`mt-3 form-control form-control-lg ${errors.password && 'is-invalid'}`}
-                        {...register('password', {required: true, pattern: /^([a-zA-Z0-9áéíóúñÑÁÉÍÓÚ*#$-_+"!%&])$/i })}
+                        {...register('password', {required: true, pattern: /^\S+$/ })}
                     />
                     {errors.password?.type === 'required' && (
                         <span className="invalid-feedback d-block">Contraseña requerida</span>

@@ -51,8 +51,48 @@ function Codigos() {
   return (
     <>
     <div className='fondoPantalla'>
-        <CargarCodigo />
-        <CargarPrueba />
+        <div className="accordion container" id="accordionExample">
+            <div className="accordion-item colorFondo">
+                <h2 className="accordion-header colorFondo" id="headingOne">
+                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    <div>
+                        <div><span className='text-light fs-3'>Cargar un nuevo código</span></div>
+                        <div className='mt-2'><span className='text-light text-opacity-75 fs-6'>Recuerde que esto restara un crédito de su cuenta.</span></div>
+                    </div>
+                </button>
+                </h2>
+                <div id="collapseOne" className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div className="accordion-body">
+                    <CargarCodigo />
+                </div>
+                </div>
+            </div>
+            <div className="accordion-item">
+                <h2 className="accordion-header" id="headingTwo">
+                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <div>
+                        <div><span className='text-light fs-3'>Cargar una nueva prueba</span></div>
+                        <div className='mt-2'><span className='text-light text-opacity-75 fs-6'>La prueba gratis dura un día.</span></div>
+                    </div>
+                </button>
+                </h2>
+                <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                <div className="accordion-body">
+                    <CargarPrueba />
+                </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
         <div className="text-center mx-auto fs-1 tituloCodigos text-light rounded p-3 w-50">
             { admin ? <>Códigos</> : <>Tus códigos</> }
         </div>

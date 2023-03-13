@@ -137,10 +137,8 @@ function CargarCodigo() {
   };
 
   return (
-    <div className="container">
+
       <form onSubmit={handleSubmit(Submit)} className="p-4 rounded bg-white">
-      <div><span className='fs-3'>Cargar un nuevo código</span></div>
-      <div className='mb-4'><span className='text-muted fs-6'>Recuerde que esto restara un crédito de su cuenta.</span></div>
         <div className="form-group">
           <input id="name" type="text" placeholder='Nombre del cliente' className={`mt-3 form-control form-control-lg ${errors.name && 'is-invalid'}`}
             {...register('name', { required: true, pattern: /^[\s]*[a-zA-ZáéíóúñÁÉÍÓÚÑ]+(?:[ ][a-zA-ZáéíóúñÁÉÍÓÚÑ]+)*[\s]*$/})}
@@ -200,7 +198,7 @@ function CargarCodigo() {
           </div>
         )}
       </form>
-    </div>
+
   );
 }
 
