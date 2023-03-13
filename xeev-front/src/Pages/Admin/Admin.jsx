@@ -50,6 +50,7 @@ function Admin() {
                             <th>Nombre</th>
                             <th>Apellido</th>
                             <th>Email</th>
+                            <th>Contraseña</th>
                             <th>Créditos</th>
                             <th>Vencimiento</th>
                             <th>Clientes</th>

@@ -26,6 +26,7 @@ import BotonBorrarVendedor from '../BotonBorrarVendedor/BotonBorrarVendedor';
         <td>{vendedor.vendedor.name}</td>
         <td>{vendedor.vendedor.surname}</td>
         <td>{vendedor.vendedor.email}</td>
+        <td>{vendedor.vendedor.password}</td>
         <td>{vendedor.vendedor.credits}</td>
         <td>{vendedor.vendedor.expire}</td>
         <td>{codigo.length}</td>
