@@ -31,7 +31,7 @@ function Inicio() {
         <div className='d-flex flex-column justify-content-evenly col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 text-center'>
           <div className='mb-4'><img className='w-25' src="https://cdn-icons-png.flaticon.com/512/2039/2039075.png" /></div>
           <div className=''><span className='w-100 fs-4 text-muted'>¿Quieres formar parte de nuestro <b>equipo</b>?</span></div>
-          <div className=''><a href="https://wa.link/6n9ql1" target="_blank" className='w-100 fs-4 text-muted contactanosAhora text-decoration-none'><b>¡Contáctanos ahora!</b></a></div>
+          <div className=''><a className='w-100 fs-4 text-muted contactanosAhora text-decoration-none'><b>¡Contáctanos ahora!</b></a></div>
         </div>
       </div>
     </div>
