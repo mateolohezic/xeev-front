@@ -156,7 +156,7 @@ function CargarPrueba() {
               pattern: /^[\w]{8}$/g,
               validate: (value) =>
               !codigo.some((obj) => obj.code.toUpperCase() === value.toUpperCase()) ||
-              "¡Este código ya esta cargado!",
+              "¡Este código ya uso su prueba!",
              })}
           />
           {errors.codigo?.type === 'required' && (

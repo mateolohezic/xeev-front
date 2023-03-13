@@ -30,7 +30,7 @@ const Footer = () => {
                     <a href="https://api.whatsapp.com/send?phone=543816227964&text=Hola!%20Tengo%20una%20consulta%20%F0%9F%98%85" target="_blank"><i className="bi bi-whatsapp"></i></a>
                   </div>
                   <div className="informacionContacto align-middle border-start border-1 ps-2">
-                    <div>Argentina, Tucumán, CP 4107</div>
+                    <div>Argentina, Tucumán</div>
                     <div>xplay@gmail.com</div>
                   </div>
                 </div>

@@ -4,6 +4,7 @@ import CargarCodigo from '../../Components/CargarCodigo/CargarCodigo';
 import FilaCodigosVendedor from '../../Components/FilaCodigosVendedor/FilaCodigosVendedor';
 import './codigos.css';
 import CargarPrueba from '../../Components/CargarPrueba/CargarPrueba';
+import ImprimirFilaCodigoVendedor from '../../Components/ImprimirFilaCodigoVendedor/ImprimirFilaCodigoVendedor';
 
 function Codigos() {
 
@@ -11,7 +12,6 @@ function Codigos() {
     const [admin, setAdmin] = useState(false)
     const [codigo, setCodigo] = useState([])
     const [codigoPrint, setCodigoPrint] = useState([])
-    const [codigosSinFiltrar, setCodigosSinFiltrar] = useState([])
     const id = localStorage.getItem('idUsuarioLogeado');
 
     if (id === null) {
@@ -19,32 +19,28 @@ function Codigos() {
     }
   
     useEffect(() =>{
+    const usar = async () =>{
         if (id !== null) {
-            axios.get(`https://automatizacion-xeev-production.up.railway.app/users/${id}`)
-            .then((response) =>{
-                setUser(response.data);
+            await axios.get(`https://automatizacion-xeev-production.up.railway.app/users/${id}`)
+            .then(async (response) =>{
+                await setUser(response.data);
                 if (response.data.role === 'admin') {
-                    setAdmin(true);
+                    await setAdmin(true);
                 }
             })
             .catch((error) =>{
                 console.error(error);
             })
-            axios.get(`https://automatizacion-xeev-production.up.railway.app/codigo/get-codigo`)
-            .then((response) =>{
-                if (admin === false){
-                    const codigosFiltradoss = response.data.filter((codigo) => codigo.seller === user.username);
-                    setCodigo(codigosFiltradoss);
-                    setCodigoPrint(codigosFiltradoss);
-                } else {
+            await axios.get(`https://automatizacion-xeev-production.up.railway.app/codigo/get-codigo`)
+            .then(async (response) =>{
                     setCodigo(response.data);
                     setCodigoPrint(response.data);
-                }
             })
             .catch((error) =>{
                 console.error(error);
             })
-        }
+        }}
+        usar()
     }, [id, admin])
 
     const searchCoinciden = (busqueda) => {
@@ -84,7 +80,8 @@ function Codigos() {
                         </tr>
                         </thead>
                         <tbody>
-                        { codigoPrint.length > 0 && codigoPrint.sort((a,b) => (a.code > b.code) ? 1 : ((b.code > a.code) ? -1 : 0)).map(cadaCodigo => <FilaCodigosVendedor key={cadaCodigo._id} codigo={cadaCodigo}/>)}
+                        <ImprimirFilaCodigoVendedor codigo={codigoPrint} />
+                        {/* { codigoPrint.length > 0 && codigoPrint.sort((a,b) => (a.code > b.code) ? 1 : ((b.code > a.code) ? -1 : 0)).map(cadaCodigo => <FilaCodigosVendedor key={cadaCodigo._id} codigo={cadaCodigo}/>)} */}
                         </tbody>
                     </table>
                 </div>
