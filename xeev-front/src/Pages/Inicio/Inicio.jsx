@@ -6,6 +6,7 @@ import coins from './coins.png';
 import guaranteed from './guaranteed.png';
 import value from './value.png';
 import winner from './winner.png';
+import logo from './XPLAY.png';
 
 function Inicio() {
 
@@ -22,7 +23,7 @@ function Inicio() {
           </span></div>
         </div>
         <div className='col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 text-center animate__animated animate__backInRight'>
-          <img src="./XPLAY.png" className='img-fluid rounded w-100'/>
+          <img src={logo} className='img-fluid rounded w-100'/>
         </div>
       </div>
       <div className='row w-75 mx-auto mt-5 pb-5 gap-5 gap-sm-5 gap-md-0 gap-lg-0 gap-xl-0 gap-xxl-0'>
