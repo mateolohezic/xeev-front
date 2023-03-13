@@ -16,7 +16,7 @@ function CargarCodigo() {
   })
 
   const Submit = async (data) => {
-    const codigoExists = await prueba.find(prueba => prueba.code === data.codigo.toUpperCase());
+    const codigoExists = await prueba.find(prueba => prueba.code === data.codigo.toUpperCase() && prueba.status === 'activo');
     if (codigoExists) {
       Swal.fire(
         '¡Prueba activa!',
