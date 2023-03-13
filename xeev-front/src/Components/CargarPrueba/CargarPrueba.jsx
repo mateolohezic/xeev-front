@@ -2,10 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import Swal from 'sweetalert2'
-import './cargarCodigo.css';
 
-
-function CargarCodigo() {
+function CargarPrueba() {
 
   const swalWithBootstrapButtons = Swal.mixin({
     customClass: {
@@ -16,24 +14,18 @@ function CargarCodigo() {
   })
 
   const Submit = async (data) => {
-    const codigoExists = await prueba.find(prueba => prueba.code === data.codigo.toUpperCase());
+    const codigoExists = await codigoActivos.find(prueba => prueba.code === data.codigo.toUpperCase());
     if (codigoExists) {
       Swal.fire(
-        '¡Prueba activa!',
-        'Este código tiene una prueba activa, espera a que termine.',
+        '¡Código ya activo!',
+        'Este código no puede tener una prueba.',
         'error'
       )
-    } else if (user.credits === 0 && user.role === 'usuario'){
-      Swal.fire(
-        '¡Sin créditos!',
-        'No tienes los créditos necesarios para hacer esto.',
-        'error'
-      )
-    } else{
+    } else {
     swalWithBootstrapButtons.fire({
-      title: '¿Estas seguro que quieres activar este código?',
-      text: "Esta acción consumirá un crédito.",
-      icon: 'question',
+      title: '¿Estas seguro que quieres activar esta prueba?',
+      text: "Se permite solo una prueba por código.",
+      icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Confirmar',
       cancelButtonText: 'Cancelar',
@@ -51,8 +43,8 @@ function CargarCodigo() {
         await onSubmit(data)
         swalLoading.close();
         swalWithBootstrapButtons.fire(
-          '¡Código activado con exito!',
-          'El código de su cliente se ha cargado y activado con éxito.',
+          '¡Prueba activada con exito!',
+          'La prueba de su cliente se ha cargado y activado con éxito.',
           'success'
         ).then(() => {
           window.location.reload(true);
@@ -66,8 +58,8 @@ function CargarCodigo() {
           'error'
         )
       }
-    })
-  }}
+    })}
+  }
 
   const { register, handleSubmit, formState: { errors }} = useForm();
   const [submitting, setSubmitting] = useState(false);
@@ -76,20 +68,20 @@ function CargarCodigo() {
 
   const id = localStorage.getItem('idUsuarioLogeado');
   const [codigo, setCodigo] = useState([])
-  const [prueba, setPrueba] = useState([])
+  const [codigoActivos, setCodigoActivos] = useState([])
 
   useEffect(() =>{
     if (id !== null) {
-        axios.get(`https://automatizacion-xeev-production.up.railway.app/codigo/get-codigo`)
+        axios.get(`https://automatizacion-xeev-production.up.railway.app/prueba/get-prueba`)
         .then((response) =>{
             setCodigo(response.data);
         })
         .catch((error) =>{
             console.error(error);
         })
-        axios.get(`https://automatizacion-xeev-production.up.railway.app/prueba/get-prueba`)
+        axios.get(`https://automatizacion-xeev-production.up.railway.app/codigo/get-codigo`)
         .then((response) =>{
-            setPrueba(response.data);
+          setCodigoActivos(response.data);
         })
         .catch((error) =>{
             console.error(error);
@@ -116,13 +108,7 @@ function CargarCodigo() {
   const onSubmit = async (data) => {
     setSubmitting(true);
     try {
-      const creditosNuevos = parseInt(user.credits) - 1
-      if (user.role === 'usuario'){
-      await axios.patch(`https://automatizacion-xeev-production.up.railway.app/users/restar-credito`, {
-          id: user._id,
-          credits: creditosNuevos
-      })}
-      const response = await axios.post('https://automatizacion-xeev-production.up.railway.app/codigo/cargar-codigo', {
+      const response = await axios.post('https://automatizacion-xeev-production.up.railway.app/prueba/cargar-prueba', {
         codigo: data.codigo.toUpperCase(),
         name: data.name,
         number: data.number,
@@ -137,10 +123,10 @@ function CargarCodigo() {
   };
 
   return (
-    <div className="container">
+    <div className="container mt-4">
       <form onSubmit={handleSubmit(Submit)} className="p-4 rounded bg-white">
-      <div><span className='fs-3'>Cargar un nuevo código</span></div>
-      <div className='mb-4'><span className='text-muted fs-6'>Recuerde que esto restara un crédito de su cuenta.</span></div>
+      <div><span className='fs-3'>Cargar una nueva prueba</span></div>
+      <div className='mb-4'><span className='text-muted fs-6'>La prueba gratis dura un día.</span></div>
         <div className="form-group">
           <input id="name" type="text" placeholder='Nombre del cliente' className={`mt-3 form-control form-control-lg ${errors.name && 'is-invalid'}`}
             {...register('name', { required: true, pattern: /^[a-zA-ZáéíóúñÁÉÍÓÚÑ]+(?:[ ][a-zA-ZáéíóúñÁÉÍÓÚÑ]+)*$/ })}
@@ -189,7 +175,7 @@ function CargarCodigo() {
             <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
           ) : (
             <>
-              <i className="bi bi-play-fill"></i> Añadir
+              <i className="bi bi-hourglass-split"></i> Prueba
             </>
           )}
         </button>
@@ -204,4 +190,4 @@ function CargarCodigo() {
   );
 }
 
-export default CargarCodigo;
+export default CargarPrueba;
