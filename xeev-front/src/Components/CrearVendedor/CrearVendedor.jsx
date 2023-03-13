@@ -60,12 +60,12 @@ function CrearVendedor() {
     setSubmitting(true);
     try {
       await axios.post(`https://automatizacion-xeev-production.up.railway.app/users/crear-user`, {
-          username: data.username,
-          name: data.name,
-          surname: data.surname,
-          email: data.email,
-          password: data.password,
-          role: data.role.toLowerCase()
+          username: data.username.trim(),
+          name: data.name.trim(),
+          surname: data.surname.trim(),
+          email: data.email.trim(),
+          password: data.password.trim(),
+          role: data.role.toLowerCase().trim()
       })
     } catch (error) {
       console.log(error);
@@ -79,7 +79,7 @@ function CrearVendedor() {
       <div className='mb-3'><span className='fs-3'>Añadir un vendedor</span></div>
         <div className="form-group">
           <input id="name" type="text" placeholder='Nombre' className={`mt-3 form-control form-control-lg ${errors.name && 'is-invalid'}`}
-            {...register('name', { required: true, pattern: /^[a-zA-ZáéíóúñÁÉÍÓÚÑ]+(?:[ ][a-zA-ZáéíóúñÁÉÍÓÚÑ]+)*$/ })}
+            {...register('name', { required: true, pattern: /^[\s]*[a-zA-ZáéíóúñÁÉÍÓÚÑ]+(?:[ ][a-zA-ZáéíóúñÁÉÍÓÚÑ]+)*[\s]*$/ })}
           />
           {errors.name?.type === 'required' && (
             <span className="invalid-feedback d-block">Campo requerido</span>
@@ -90,7 +90,7 @@ function CrearVendedor() {
         </div>
         <div className="form-group">
           <input id="surname" type="text" placeholder='Apellido' className={`mt-3 form-control form-control-lg ${errors.surname && 'is-invalid'}`}
-            {...register('surname', { required: true, pattern: /^[a-zA-ZáéíóúñÁÉÍÓÚÑ]+(?:[ ][a-zA-ZáéíóúñÁÉÍÓÚÑ]+)*$/ })}
+            {...register('surname', { required: true, pattern: /^[\s]*[a-zA-ZáéíóúñÁÉÍÓÚÑ]+(?:[ ][a-zA-ZáéíóúñÁÉÍÓÚÑ]+)*[\s]*$/ })}
           />
           {errors.surname?.type === 'required' && (
             <span className="invalid-feedback d-block">Campo requerido</span>
@@ -101,7 +101,7 @@ function CrearVendedor() {
         </div>
         <div className="form-group">
           <input id="email" type="text" placeholder='Correo electrónico' className={`mt-3 form-control form-control-lg ${errors.email && 'is-invalid'}`}
-            {...register('email', { required: true, pattern: /^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/i })}
+            {...register('email', { required: true, pattern: /^\s*\w+[\w-.]@\w+((-\w+)|(\w)).[a-z]{2,}\s*$/i })}
           />
           {errors.email?.type === 'required' && (
             <span className="invalid-feedback d-block">Campo requerido</span>
@@ -114,7 +114,7 @@ function CrearVendedor() {
           <input id="username" type="text" placeholder='Usuario' className={`mt-3 form-control form-control-lg ${errors.username && 'is-invalid'}`}
             {...register('username', { 
               required: true,
-              pattern: /^\S+$/,
+              pattern: /^\s*\S+\s*$/,
              })}
           />
           {errors.username?.type === 'required' && (
@@ -142,7 +142,7 @@ function CrearVendedor() {
           <input id="role" type="text" placeholder='Permisos' className={`mt-3 form-control form-control-lg ${errors.role && 'is-invalid'}`}
             {...register('role', { 
               required: true,
-              pattern: /^(admin|usuario|oficial)$/,
+              pattern: /^(admin|usuario|oficial|Usuario|Admin|Oficial|USUARIO|ADMIN|OFICIAL)$/,
              })}
           />
           <div className='mt-2 ms-2'><span className='text-muted'>Opciones: admin, usuario, oficial</span></div>

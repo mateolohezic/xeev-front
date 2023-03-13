@@ -110,7 +110,7 @@ function CargarPrueba() {
     try {
       const response = await axios.post('https://automatizacion-xeev-production.up.railway.app/prueba/cargar-prueba', {
         codigo: data.codigo.toUpperCase(),
-        name: data.name,
+        name: data.name.trim(),
         number: data.number,
         seller: user.username
       });
@@ -129,7 +129,7 @@ function CargarPrueba() {
       <div className='mb-4'><span className='text-muted fs-6'>La prueba gratis dura un día.</span></div>
         <div className="form-group">
           <input id="name" type="text" placeholder='Nombre del cliente' className={`mt-3 form-control form-control-lg ${errors.name && 'is-invalid'}`}
-            {...register('name', { required: true, pattern: /^[a-zA-ZáéíóúñÁÉÍÓÚÑ]+(?:[ ][a-zA-ZáéíóúñÁÉÍÓÚÑ]+)*$/ })}
+            {...register('name', { required: true, pattern: /^[\s]*[a-zA-ZáéíóúñÁÉÍÓÚÑ]+(?:[ ][a-zA-ZáéíóúñÁÉÍÓÚÑ]+)*[\s]*$/ })}
           />
           {errors.name?.type === 'required' && (
             <span className="invalid-feedback d-block">Campo requerido</span>

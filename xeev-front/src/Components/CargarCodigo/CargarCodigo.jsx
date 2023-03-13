@@ -124,7 +124,7 @@ function CargarCodigo() {
       })}
       const response = await axios.post('https://automatizacion-xeev-production.up.railway.app/codigo/cargar-codigo', {
         codigo: data.codigo.toUpperCase(),
-        name: data.name,
+        name: data.name.trim(),
         number: data.number,
         seller: user.username
       });
@@ -143,7 +143,7 @@ function CargarCodigo() {
       <div className='mb-4'><span className='text-muted fs-6'>Recuerde que esto restara un crédito de su cuenta.</span></div>
         <div className="form-group">
           <input id="name" type="text" placeholder='Nombre del cliente' className={`mt-3 form-control form-control-lg ${errors.name && 'is-invalid'}`}
-            {...register('name', { required: true, pattern: /^[a-zA-ZáéíóúñÁÉÍÓÚÑ]+(?:[ ][a-zA-ZáéíóúñÁÉÍÓÚÑ]+)*$/ })}
+            {...register('name', { required: true, pattern: /^[\s]*[a-zA-ZáéíóúñÁÉÍÓÚÑ]+(?:[ ][a-zA-ZáéíóúñÁÉÍÓÚÑ]+)*[\s]*$/})}
           />
           {errors.name?.type === 'required' && (
             <span className="invalid-feedback d-block">Campo requerido</span>
