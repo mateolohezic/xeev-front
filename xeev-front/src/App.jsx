@@ -13,15 +13,15 @@ function App() {
 
   return (
     <>
-    <ProblemasTecnicos/>
-    {/* <NavBar/> */}
+    {/* <ProblemasTecnicos/> */}
+    <NavBar/>
     <Routes>
       <Route path="/" element={<Inicio/>} />
       <Route path="/Codigo" element={<Codigos/>} />
       <Route path="/Login" element={<Login/>} />
       <Route path="/Admin" element={<Admin/>} />
     </Routes>
-    {/* <Footer/> */}
+    <Footer/>
     </>
   );
 }

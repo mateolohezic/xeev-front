@@ -43,12 +43,6 @@ function Inicio() {
           <div><img className='w-100 img-fluid rounded' src="https://lh3.googleusercontent.com/8u7WqKb548hD9w-piYWpNRLyaP-7ETQDfmBu2z7A-RONj5-y7JTUEQdrKY8L-yC4pQ=h300" /></div>
         </div>
       </div>
-      <div className='col-8 col-sm-8 col-md-6 col-lg-3 col-xl-3 col-xxl-3 mx-auto text-center animate__animated animate__backInRight border-bottom border-1 pb-5'>
-        <div className='mb-3'><span className='text-muted fs-4'><b>Tutorial</b></span></div>
-        <video className='w-100 rounded' controls>
-            <source src={videoFile} type="video/mp4" />
-        </video>
-      </div>
       <div className='row w-75 mx-auto mt-5'>
         <div className='d-flex flex-column justify-content-evenly col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 text-center'>
           <div className='mb-4'><img className='col-8 col-sm-8 col-md-6 col-lg-5 col-xl-4 col-xxl-4' src="https://cdn-icons-png.flaticon.com/512/2039/2039075.png" /></div>
