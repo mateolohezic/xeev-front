@@ -1,0 +1,25 @@
+.problemas{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    z-index: 9999999;
+    background-color: white;
+}
+
+@media (min-width: 992px){
+    .imagenMono{
+        width: 40%;
+    }
+}
+
+@media (min-width: 578px) and (max-width:992px){
+    .imagenMono{
+        width: 60%;
+    }
+}
+
+@media (max-width: 578px){
+    .imagenMono{
+        width: 90%;
+    }
+}
